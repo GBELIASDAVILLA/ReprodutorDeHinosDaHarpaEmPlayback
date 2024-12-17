@@ -1,26 +1,123 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <title>Hinos da Harpa Cristã</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro de Hinos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .hino {
+            margin-top: 20px;
+            display: none;
+        }
+        .show {
+            display: block;
+        }
+        button {
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Hinos da Harpa Cristã em Playback</h1>
-    <table border="1">
-        <tr>
-            <th>Número</th>
-            <th>Título</th>
-            <th>Ouvir</th>
-        </tr>
-        <tr>
-    <table border="1">
-        <tr>
-            <td>1</td>
-            <td>Chuvas de Graça</td>
-            <td><audio controls>
-            <source src="001 Chuvas de Graça.mp3" type="audio/mp3">
-            Seu navegador não suporta o elemento de áudio.
-             </audio></td>
-        </tr>
-    </table>
+    <div class="container">
+        <h1>Filtro de Hinos</h1>
+        <form>
+            <label for="numeroHino">Digite o número do hino (1-640):</label><br>
+            <input type="number" id="numeroHino" name="numeroHino" min="1" max="640" required><br><br>
+            <button type="button" onclick="mostrarHino()">Buscar</button>
+        </form>
+
+        <!-- Resultados dos Hinos -->
+        <div id="hino1" class="hino">
+            <h2>Hino 1: Chuvas de Graça<br></h2>
+            <p>Deus prometeu, com certeza<br>
+                Chuvas de graça mandar<br>
+                Ele nos dá fortaleza<br>
+                E ricas bênçãos sem par<br>
+                <br>
+                Chuvas de graça<br>
+                Chuvas pedimos, Senhor<br>
+                Manda-nos chuvas constantes<br>
+                Chuvas do Consolador<br>
+                <br>
+                Cristo nos tem concedido<br>
+                O Santo Consolador<br>
+                De plena paz nos enchido<br>
+                Para o reinado de amor<br>
+                <br>
+                Chuvas de graça<br>
+                Chuvas pedimos, Senhor<br>
+                Manda-nos chuvas constantes<br>
+                Chuvas do Consolador<br>
+                <br>
+                Dá-nos, Senhor, amplamente<br>
+                Teu grande gozo e poder<br>
+                Fonte de amor permanente<br>
+                Põe dentro de nosso ser<br>
+                <br>
+                Chuvas de graça<br>
+                Chuvas pedimos, Senhor<br>
+                Manda-nos chuvas constantes<br>
+                Chuvas do Consolador<br>
+                <br>
+                Faze os Teus servos piedosos<br>
+                Dá-lhes virtude e valor<br>
+                Dando os Teus dons preciosos<br>
+                Do Santo Preceptor<br>
+                <br>
+                Chuvas de graça<br>
+                Chuvas pedimos, Senhor<br>
+                Manda-nos chuvas constantes<br>
+                Chuvas do Consolador</p>
+            <audio controls>
+                <source src="001 Chuvas de Graça.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio><br>
+            <button onclick="voltar()">Voltar</button>
+        </div>
+
+        <div id="hino2" class="hino">
+            <h2>Hino 2: Exemplo de Título</h2>
+            <p>Descrição do Hino 2. Este é outro exemplo de hino com áudio.</p>
+            <audio controls>
+                <source src="audio/hino2.mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio><br>
+            <button onclick="voltar()">Voltar</button>
+        </div>
+
+        <!-- Adicione mais hinos até o número 640 seguindo o mesmo formato -->
+    </div>
+
+    <script>
+        function mostrarHino() {
+            const numero = document.getElementById("numeroHino").value;
+            const hinos = document.querySelectorAll(".hino");
+            
+            // Oculta todos os hinos
+            hinos.forEach(hino => hino.classList.remove("show"));
+
+            // Exibe o hino correspondente ao número digitado
+            const hinoSelecionado = document.getElementById(`hino${numero}`);
+            if (hinoSelecionado) {
+                hinoSelecionado.classList.add("show");
+            } else {
+                alert("Hino não encontrado. Digite um número válido entre 1 e 640.");
+            }
+        }
+
+        function voltar() {
+            const hinos = document.querySelectorAll(".hino");
+            hinos.forEach(hino => hino.classList.remove("show"));
+        }
+    </script>
 </body>
 </html>
